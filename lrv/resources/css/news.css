@@ -1,0 +1,288 @@
+.top-news
+{
+    margin: 20px auto;
+    position: relative;
+    border-radius: 10px;
+    width: 100%;
+    overflow: hidden;
+}
+.img
+{
+    display:block;
+    border-radius: 10px;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: 0.5s ease;
+}
+
+.post-details
+{
+    display:flex;
+    justify-content: space-between;
+}
+.text
+{
+    color: white;
+    position: absolute;
+    bottom:0;
+    right: 0;
+    left: 0;
+    padding:0 20px;
+    height: 30%;
+    transition: 0.5s ease;
+}
+.text-2
+{
+    color: white;
+    position: absolute;
+    bottom:0;
+    right: 0;
+    left: 0;
+    padding:0 20px;
+    height: 40%;
+    transition: 0.5s ease;
+}
+.text-2 h2
+{
+    font-size: 15px;
+}
+.text-3
+{
+    color: white;
+    position: absolute;
+    bottom:0;
+    right: 0;
+    left: 0;
+    padding:0 20px;
+    height: 50%;
+    transition: 0.5s ease;
+}
+.text-3 h2
+{
+    font-size:13px;
+}
+.top-news:hover .text-3 {
+    height: 55%;
+}
+.top-news:hover .text-2 {
+    height: 45%;
+}
+.top-news:hover .text {
+    height: 40%;
+}
+.overlay
+{
+    background-color: black;
+    opacity:0.2;
+    position:absolute;
+    top:0;
+    left:0;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    transition: 0.5s ease;
+}
+.overlay-3
+{
+    background-color: crimson;
+    opacity:0.7;
+    position:absolute;
+    top:0;
+    left:0;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    transition: 0.5s ease;
+}
+.top-news:hover .overlay-3
+{
+    height: 0;
+}
+.top-news:hover .overlay
+{
+    opacity: 0.3;
+}
+.top-news:hover .img
+{
+    transform:scale(1.15);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/* .first-news {
+    
+    position:relative;
+    height: auto;
+    overflow: hidden;
+    border-radius: 10px;
+    
+}
+.second-news {
+    overflow: hidden;
+    position: relative;
+    height:295px;
+    margin-bottom: 5px;
+    padding: 0!important;
+    border-radius: 10px;
+}
+
+.s-news-text {
+    padding: 0 5%;
+    position: absolute;
+    bottom: 0;
+    left: auto;
+    right: auto;
+    background-color: transparent;
+    overflow: hidden;
+    width: 100%;
+    height: 55%;
+    transition: .5s ease;
+    color:white;
+}
+.s-news-text h2 {
+    font-size: 20px;
+}
+.s-news-text:hover {
+    color: beige;
+    
+}
+
+.second-news:hover .s-news-text {
+    height: 60%;
+    
+}
+
+.third-news
+{
+    overflow: hidden;
+    position: relative;
+    height: 195px;
+    margin-top: 5px;
+    padding: 0!important;
+    border-radius: 10px;
+}
+.black-back
+{
+    position: absolute;
+    z-index: 0;
+    
+    bottom: 0;
+    left: 0;
+    right: 0;
+    opacity: 0.2;
+    height: 100%;
+    
+    background-color: black;
+    overflow: hidden;
+    border-radius: 10px;
+   
+    transition: 0.5s;
+}
+.overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: crimson;
+    overflow: hidden;
+    border-radius: 10px;
+    
+    height: 100%;
+    transition: .5s ease;
+    opacity:0.5;
+  }
+  .third-news:hover .overlay {
+    bottom: 100%;
+    height: 0;
+  }
+  
+  /* .text {
+    white-space: nowrap; 
+    color: white;
+    font-size: 20px;
+    position: absolute;
+    overflow: hidden;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    opacity: 1!important;
+  }   */
+
+
+/* .news-img {
+    display:block;
+    border-radius: 10px;
+    width: 100%;
+    height:100%;
+    object-fit: cover;
+    transition: 0.3s;
+}
+.news-text {
+    padding: 0 5%;
+    position: absolute;
+    bottom: 0;
+    z-index: 1;
+    left: auto;
+    right: auto;
+    background-color: transparent;
+    overflow: hidden;
+    width: 90%;
+    height: 40%;
+    transition: .5s ease;
+    color:white;
+}
+
+.news-text:hover {
+    color: beige;
+}
+.first-news:hover .news-img{
+    transform: scale(1.15);
+
+}
+.second-news:hover .news-img{
+    transform: scale(1.15);
+
+}
+.third-news:hover .news-img{
+    transform: scale(1.15);
+
+}
+.first-news:hover .black-back
+{
+    opacity: 0.35;
+}
+.second-news:hover .black-back
+{
+    opacity: 0.35;
+}
+.first-news:hover .news-text {
+    height: 45%;
+}
+.category
+{
+    padding:5px;
+    width:100px;
+}
+.post-details
+{   
+    display:flex;
+    width:80%;
+    justify-content: space-between;
+}
+.category p
+{
+    border-radius:10px;
+    text-align:center;
+    background-color:crimson;
+} */ 
