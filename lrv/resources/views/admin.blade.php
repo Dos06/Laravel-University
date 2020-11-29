@@ -317,6 +317,7 @@
                                 @csrf
                                 <ul class="ks-cboxtags">
                                     <li><input type="checkbox" id="active" name="post_active" value="1"><label for="active">Active</label></li>
+                                    <li><input type="checkbox" id="top" name="post_top" value="1"><label for="top">In top</label></li>
                                 </ul>
                                 <div class="form-group">
                                     <label>Category</label>
@@ -369,6 +370,8 @@
                                 <td>ID</td>
                                 <td>TITLE</td>
                                 <td>DATE</td>
+                                <td>ACTIVE</td>
+                                <td>TOP</td>
                                 <td>CATEGORY</td>
                                 <td>OPERATIONS</td>
                             </tr>
@@ -390,6 +393,8 @@
                                 <td>{{ $post->id }}</td>
                                 <td>{{ $post->title }}</td>
                                 <td>{{ $post->created_at }}</td>
+                                <td>{{ $post->active }}</td>
+                                <td>{{ $post->top }}</td>
                                 <td>{{ $post_category->name }}</td>
                                 <td class="row">
                                     <button type="button" class="btn btn-danger btn-sm mr-1" data-toggle="modal" data-target="#delete_post{{ $post->id }}">DELETE</button>
@@ -439,6 +444,7 @@
 
                                                 <ul class="ks-cboxtags">
                                                     <li><input type="checkbox" id="active{{ $post->id }}" name="post_active" value="1" @if ($post->active == 1) {{ 'checked' }} @endif><label for="active{{ $post->id }}">Active</label></li>
+                                                    <li><input type="checkbox" id="top{{ $post->id }}" name="post_top" value="1" @if ($post->top == 1) {{ 'checked' }} @endif><label for="top{{ $post->id }}">In top</label></li>
                                                 </ul>
                                                 <div class="form-group">
                                                     <label>Category : </label>

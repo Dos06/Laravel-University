@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Usr;
 use App\Models\Category;
 use App\Models\Post;
+use App\Models\Comment;
 
 class DbController extends Controller {
     public function getAdmin() {
@@ -66,15 +67,18 @@ class DbController extends Controller {
         $repass = $req->input('user_repassword');
         if ($user->password == $oldpass and $pass == $repass) {
             $user->password = $pass;
+            $req->session()->put('currentUser', $user);
+
+            $user->save();
+            return redirect()->route('profile')->with('success', 'Profile was updated');
         }
         // $user->password = $req->input('user_password');
         // $user->password = $req->input('user_oldpassword');
         // $user->password = $req->input('user_repassword');
+        else {
+            return redirect()->route('profile')->with('fail', 'Incorrect values');
+        }
 
-        $req->session()->put('currentUser', $user);
-
-        $user->save();
-        return redirect()->route('profile')->with('success', 'Profile was updated');
     }
 
     public function getCategories() {
@@ -112,12 +116,17 @@ class DbController extends Controller {
     }
     public function getPost($id) {
         $post = new Post;
-        return view('news-details', ['post' => $post->where('id', '=', $id)->get()] );
+        return view('news-details', ['post' => $post->find($id), 'users' => Usr::all(), 'categories' => Category::all()] );
     }
     public function deletePost(Request $req) {
         $id = $req->input('id');
         Post::find($id)->delete();
         return redirect()->route('admin')->with('success', 'Post was deleted');
+    }
+    public function deletePostProfile(Request $req) {
+        $id = $req->input('id');
+        Post::find($id)->delete();
+        return redirect()->route('profile')->with('success', 'Post was deleted');
     }
     public function addPost(Request $req) {
         $post = new Post();
@@ -126,11 +135,20 @@ class DbController extends Controller {
         $post->content = $req->input('post_content');
         $post->likes = 0;
         $active = $req->input('post_active');
+        $top = $req->input('post_top');
+
         if  ($active != null) {
             $post->active = 1;
         } else {
             $post->active = 0;
         }
+
+        if  ($top != null) {
+            $post->top = 1;
+        } else {
+            $post->top = 0;
+        }
+
         $post->category_id = $req->input('post_category_id');
         $post->author_id = $req->input('author_id');
 
@@ -152,11 +170,20 @@ class DbController extends Controller {
         $post->likes = 0;
         // $post->active = $req->input('post_active');
         $active = $req->input('post_active');
+        $top = $req->input('post_top');
+
         if  ($active != null) {
             $post->active = 1;
         } else {
             $post->active = 0;
         }
+
+        if  ($top != null) {
+            $post->top = 1;
+        } else {
+            $post->top = 0;
+        }
+
         $post->category_id = $req->input('post_category_id');
         $post->author_id = $req->input('author_id');
 
@@ -179,15 +206,66 @@ class DbController extends Controller {
         $post->picture_url = $req->input('post_pictureurl');
         $post->likes = $req->input('post_likes');
         $active = $req->input('post_active');
+        $top = $req->input('post_top');
+
         if  ($active != null) {
             $post->active = 1;
         } else {
             $post->active = 0;
         }
+
+        if  ($top != null) {
+            $post->top = 1;
+        } else {
+            $post->top = 0;
+        }
+
         $post->category_id = $req->input('post_category_id');
         $post->author_id = $req->input('author_id');
 
         $post->save();
         return redirect()->route('admin')->with('success', 'Post was updated');
     }
+    public function editPostProfile(Request $req) {
+        $id = $req->input('id');
+        $post = Post::find($id);
+        $post->title = $req->input('post_title');
+        $post->short_content = $req->input('post_shortcontent');
+        $post->content = $req->input('post_content');
+        $post->picture_url = $req->input('post_pictureurl');
+        $post->likes = $req->input('post_likes');
+        $active = $req->input('post_active');
+        $top = $req->input('post_top');
+
+        if  ($active != null) {
+            $post->active = 1;
+        } else {
+            $post->active = 0;
+        }
+
+        if  ($top != null) {
+            $post->top = 1;
+        } else {
+            $post->top = 0;
+        }
+
+        $post->category_id = $req->input('post_category_id');
+        $post->author_id = $req->input('author_id');
+
+        $post->save();
+        return redirect()->route('profile')->with('success', 'Post was updated');
+    }
+
+
+
+    public function addComment(Request $req) {
+        $comment = new Comment();
+        $comment->post_id = $req->input('post_id');
+        $comment->author_id = $req->input('author_id');
+        $comment->content = $req->input('content');
+
+        $comment->save();
+        return redirect()->back()->with('success', 'Comment was added');
+    }
+
 }

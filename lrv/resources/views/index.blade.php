@@ -101,19 +101,19 @@
 
                                     <div class="form-group">
                                         <label>Email : </label>
-                                        <input type="email" name="email" id="email" class="form-control" placeholder="Enter email..." >
+                                        <input type="email" name="email" id="email" class="form-control" placeholder="Enter email..." required>
                                     </div>
                                     <div class="form-group">
                                         <label>Name : </label>
-                                        <input type="text" name="name" id="name" class="form-control" placeholder="Enter name..." >
+                                        <input type="text" name="name" id="name" class="form-control" placeholder="Enter name..." required>
                                     </div>
                                     <div class="form-group">
                                         <label>Phone : </label>
-                                        <input type="phone" name="phone" id="phone" class="form-control" placeholder="Enter phone..." >
+                                        <input type="phone" name="phone" id="phone" class="form-control" placeholder="Enter phone..." required>
                                     </div>
                                     <div class="form-group">
-                                        <label>Some information : </label>
-                                        <input type="text-area" name="info" id="info" class="form-control" placeholder="Put some info..." >
+                                        <label>Your question : </label>
+                                        <input type="text-area" name="info" id="info" class="form-control" placeholder="Put some info..." required>
                                     </div>
                                     <div class="text-center">
                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">CANCEL</button>

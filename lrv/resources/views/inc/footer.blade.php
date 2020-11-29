@@ -86,54 +86,7 @@
                 var marker = new google.maps.Marker({position: uluru, map: map});
             };
 
-        $('body').on('keyup', '#search-news', function() {
-            var searchQuery = $(this).val();
-            $.ajax({
-                method: 'POST',
-                url: '{{ route("search-news") }}',
-                dataType: 'json',
-                data: {
-                    '_token': '{{ csrf_token() }}',
-                    searchQuery: searchQuery
-                },
-                success: function(res) {
-                    var tableRow = '';
-
-                    $('#dynamic-row').html('');
-                    $.each(res, function(index, value){
-                        if(index%2!=0){
-                            tableRow = `<div class="news-block
-                            mb-3 shadow bg-white rounded"><img
-                            class="news-block-img" src="`+value.picture_url+`"><div
-                            class="news-block-content"><p><span>By IITU News</span>October 20, 2020</p><a
-                            class="red hover-black" href="{{ route('news-details') }}"><h2>`+value.title+`</h2></a><p
-                            class="short-text">`+value.short_content+`</p><hr><div
-                            class="footer-news-block d-flex align-items-center justify-content-between"><a
-                            href="{{ route('news-details') }}" class="category-link red hover-black">Design</a><a
-                            href="{{ route('news-details') }}" class="comment-link red hover-black"><i
-                            class="fas fa-comment-alt"></i> 14</a></div></div></div>`;
-                            $('#dynamic-row').append(tableRow)
-                        }
-                    })
-                    $('#dynamic-row1').html('');
-                    $.each(res, function(index, value){
-                        if(index%2==0){
-                            tableRow = `<div class="news-block
-                            mb-3 shadow bg-white rounded"><img
-                            class="news-block-img" src="`+value.picture_url+`"><div
-                            class="news-block-content"><p><span>By IITU News</span>October 20, 2020</p><a
-                            class="red hover-black" href="{{ route('news-details') }}"><h2>`+value.title+`</h2></a><p
-                            class="short-text">`+value.short_content+`</p><hr><div
-                            class="footer-news-block d-flex align-items-center justify-content-between"><a
-                            href="{{ route('news-details') }}" class="category-link red hover-black">Design</a><a
-                            href="{{ route('news-details') }}" class="comment-link red hover-black"><i
-                            class="fas fa-comment-alt"></i> 14</a></div></div></div>`;
-                            $('#dynamic-row1').append(tableRow)
-                        }
-                    })
-                }
-            });
-        });
+        
     </script>
     <script async defer
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDKRJyaWMT-jvx36xRhFvMB_RaBl7uyIJQ&callback=initMap">

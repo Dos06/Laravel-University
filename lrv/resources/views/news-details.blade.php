@@ -10,7 +10,7 @@
         <div class="container h-100 d-flex align-items-center justify-content-between">
             <h2>News Details</h2>
             <div>
-                <p>News > Politics > News title</p>
+                <p>News > @foreach ($categories as $cat) @if ($cat->id == $post->category_id) {{ $cat->name }} <?php break; ?> @endif @endforeach > {{ $post->title }}</p>
             </div>
         </div>
     </div>
@@ -19,42 +19,23 @@
 
             <div class="col-sm-12 col-lg-9">
                 <div class="news-block mb-2">
-                    <img class="news-block-img" src="https://images.idgesg.net/images/article/2019/09/apple-logo-colors-01-100810554-large.jpg">
+                    <img class="news-block-img" src="{{ $post->picture_url }}">
                     <div class="news-block-chert mt-3">
                         <p>
-                            <span>By IITU News</span>
-                            October 20, 2020
+                            <span class="d-block">By <b class="red">@foreach ($users as $user) @if ($user->id == $post->author_id) {{ $user->name . ' ' . $user->surname }} <?php break; ?> @endif @endforeach</b></span>
+                            {{ date('d.m.Y', strtotime($post->created_at)) }}
                         </p>
                         <hr>
-                        <a class="red hover-black" href="{{ route('news-details') }}"><h2>Couple of cool mock-up ideas</h2></a>
+                        <a class="red hover-black" href="#"><h2>{{ $post->title }}</h2></a>
                         <p class="short-text">
-                            Ut et lacus ex. Aliquam dignissim mauris
-                            sit amet purus convallis, vitae vehicula lectus tincidunt. Nulla placerat…
+                            {{ $post->short_content }}
                         </p>
-                        <p class="news-block-contents">Ut et lacus ex. Aliquam dignissim mauris
-                            sit amet purus convallis, vitae vehicula lectus tincidunt. Nulla placerat… Ut et lacus ex. Aliquam dignissim mauris
-                            sit amet purus convallis, vitae vehicula lectus tincidunt. Nulla placerat… Ut et lacus ex. Aliquam dignissim mauris
-                            sit amet purus convallis, vitae vehicula lectus tincidunt. Nulla placerat… Ut et lacus ex. Aliquam dignissim mauris
-                            sit amet purus convallis, vitae vehicula lectus tincidunt. Nulla placerat… Ut et lacus ex. Aliquam dignissim mauris
-                            sit amet purus convallis, vitae vehicula lectus tincidunt. Nulla placerat… Ut et lacus ex. Aliquam dignissim mauris
-                            sit amet purus convallis, vitae vehicula lectus tincidunt. Nulla placerat… Ut et lacus ex. Aliquam dignissim mauris
-                            sit amet purus convallis, vitae vehicula lectus tincidunt. Nulla placerat… Ut et lacus ex. Aliquam dignissim mauris
-                            sit amet purus convallis, vitae vehicula lectus tincidunt. Nulla placerat… Ut et lacus ex. Aliquam dignissim mauris
-                            sit amet purus convallis, vitae vehicula lectus tincidunt. Nulla placerat… Ut et lacus ex. Aliquam dignissim mauris
-                            sit amet purus convallis, vitae vehicula lectus tincidunt. Nulla placerat… Ut et lacus ex. Aliquam dignissim mauris
-                            sit amet purus convallis, vitae vehicula lectus tincidunt. Nulla placerat… Ut et lacus ex. Aliquam dignissim mauris
-                            sit amet purus convallis, vitae vehicula lectus tincidunt. Nulla placerat… Ut et lacus ex. Aliquam dignissim mauris
-                            sit amet purus convallis, vitae vehicula lectus tincidunt. Nulla placerat… Ut et lacus ex. Aliquam dignissim mauris
-                            sit amet purus convallis, vitae vehicula lectus tincidunt. Nulla placerat… Ut et lacus ex. Aliquam dignissim mauris
-                            sit amet purus convallis, vitae vehicula lectus tincidunt. Nulla placerat… Ut et lacus ex. Aliquam dignissim mauris
-                            sit amet purus convallis, vitae vehicula lectus tincidunt. Nulla placerat… Ut et lacus ex. Aliquam dignissim mauris
-                            sit amet purus convallis, vitae vehicula lectus tincidunt. Nulla placerat… Ut et lacus ex. Aliquam dignissim mauris
-                            sit amet purus convallis, vitae vehicula lectus tincidunt. Nulla placerat… Ut et lacus ex. Aliquam dignissim mauris
-                            sit amet purus convallis, vitae vehicula lectus tincidunt. Nulla placerat…
+                        <p class="news-block-contents">
+                            {{ $post->content }}
                         </p>
                         <div class="footer-news-block d-flex align-items-center justify-content-between">
-                            <a href="{{ route('news-details') }}" class="category-link red hover-black">Design</a>
-                            <a href="{{ route('news-details') }}" class="comment-link red hover-black"><i class="fas fa-comment-alt"></i> 14</a>
+                            <a href="#" class="category-link red hover-black">Design</a>
+                            <a href="#" class="comment-link red hover-black"><i class="fas fa-comment-alt"></i> 14</a>
                         </div>
                     </div>
                 </div>
@@ -131,19 +112,20 @@
 
 
 
-
-
-
+    <?php
+    $current_user = session()->get('currentUser');
+    ?>
+    @if ($current_user != null)
 
     <div class="container">
-        <div class="row col-12 m-0">
+        <div class="row col-sm-12 col-lg-9 m-0">
 
             <div class="post-news-details mt-5">
                 <div class="sub-comment"></div>
 
                 <div class="comment-box box mb-4">
                     <div class="comment-btn">
-                        <input type="textarea" class="comment btn btn-lg btn-dark form-control shadow container-fluid p-4" rows="10" cols="30" placeholder="Add a comment...">
+                        <input type="textarea" class="comment btn btn-lg btn-dark form-control shadow container-fluid p-4" rows="5" cols="30" placeholder="Add a comment...">
                     </div>
                 </div>
             </div>
@@ -151,16 +133,21 @@
             <div class="add-comment container-fluid p-4 mb-4">
                 <div class="box">
                     <div class="add-comment-img">
-                        <img src="http://nicesnippets.com/demo/man04.png">
+                        <img src="{{ $current_user->picture_url }}">
                     </div>
                     <div class="add-comment-text">
-                        <textarea rows="5" class="example-textarea p-3"></textarea>
+                        <form action="">
+                            @csrf
+                            <input type="hidden" name="post_id" value="{{ $post->id }}">
+                            <input type="hidden" name="author_id" value="{{ $current_user->id }}">
+                            <textarea rows="3" name="content" class="example-textarea p-3"></textarea>
+                        </form>
                     </div>
                     <div style="clear:both;"></div>
                 </div>
                 <div class="add-comment-text-btn text-center">
-                    <button class="btn btn-dark post-comment-btn mt-2">Post Comment</button>
-                    <button class="btn btn-secondary cancel-btn mt-2">Cancel</button>
+                    <button type="submit" class="btn btn-dark post-comment-btn mt-2">Post Comment</button>
+                    <button type="button" class="btn btn-secondary cancel-btn mt-2">Cancel</button>
                 </div>
             </div>
 
@@ -169,7 +156,8 @@
 
 
 
-    <footer id="footer"></footer>
+
+    {{-- <footer id="footer"></footer> --}}
 
     <script>
         $(".comment").click(function() {
@@ -190,13 +178,16 @@
                 alert("Plese Enter a comment, after that click the \"Post\" button.");
             }else{
                 $('.example-textarea').val('');
-                $(".sub-comment").append('<div class="example"><div class="comment-img"><img src="http://nicesnippets.com/demo/man04.png" class="example"></div><div class="comment"><p>'+ data +'</p></div><div style="clear:both;"></div></div><hr>');
+                $(".sub-comment").append('<div class="example"><div class="comment-img"><img src="{{ $current_user->picture_url }}" class="example"></div><div class="comment"><p>'+ data +'</p></div><div style="clear:both;"></div></div><hr>');
             }
         });
 
         $(".cancel-btn").click(function() {
             $(".add-comment").hide();
         });
+
     </script>
+
+    @endif
 
 @endsection

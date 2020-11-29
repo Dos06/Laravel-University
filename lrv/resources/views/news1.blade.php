@@ -93,11 +93,8 @@
 
 
                     <div class="col-sm-12 col-lg-6" id="dynamic-row1">
-                        <?php
-                        $index = 1;
-                        ?>
-                        @foreach ($posts as $post)
-                            @if ($index % 2 != 0)
+                        @foreach ($posts1 as $post)
+
                         <div class="news-block mb-3 shadow bg-white rounded">
                             <img class="news-block-img" src="{{ $post->picture_url }}">
                             <div class="news-block-content">
@@ -124,10 +121,6 @@
 
                             </div>
                         </div>
-                            @endif
-                            <?php
-                            $index++;
-                            ?>
 
 
                         @endforeach
@@ -136,11 +129,9 @@
 
 
                     <div class="col-sm-12 col-lg-6" id="dynamic-row">
-                        <?php
-                            $index =1;
-                        ?>
-                        @foreach ($posts as $post)
-                        @if($index % 2 == 0)
+
+                        @foreach ($posts2 as $post)
+
                         <div class="news-block mb-3 shadow bg-white rounded">
                             <img class="news-block-img" src="{{ $post->picture_url }}">
                             <div class="news-block-content">
@@ -168,10 +159,7 @@
                             </div>
 
                         </div>
-                        @endif
-                        <?php
-                        $index++;
-                        ?>
+
                         @endforeach
 
                     </div>
@@ -182,12 +170,11 @@
 
                 </div>
                 <div class="row justify-content-center align-items-center my-3">
-                    <ul class="">
-                        <!-- <li><a class="prev page-numbers hover-red" href="#"><b>Previous</b></a></li> -->
-                        <!-- <li class="current"><a class="page-numbers" href="#"><b>1</b></a></li>
-                        <li><a class="page-numbers hover-red" href="#"><b>2</b></a></li> -->
-                        {{$posts->links()}}
-                        <!-- <li><a class="next page-numbers hover-red" href="#"><b>Next</b></a></li> -->
+                    <ul class="page-numbers">
+                        <li><a class="prev page-numbers hover-red" href="#"><b>Previous</b></a></li>
+                        <li class="current"><a class="page-numbers" href="#"><b>1</b></a></li>
+                        <li><a class="page-numbers hover-red" href="#"><b>2</b></a></li>
+                        <li><a class="next page-numbers hover-red" href="#"><b>Next</b></a></li>
                     </ul>
                 </div>
             </div>
@@ -231,7 +218,7 @@
 
                     $('#dynamic-row').html('');
                     $.each(res, function(index, value){
-                        if(index % 2 != 0){
+                        if(index%2!=0){
                             tableRow = `<div class="news-block
                             mb-3 shadow bg-white rounded"><img
                             class="news-block-img" src="`+value.picture_url+`"><div
