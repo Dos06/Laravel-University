@@ -160,18 +160,13 @@
                                                     <input type="hidden" name="id" value="{{ $post->id }}">
                                                     <input type="hidden" name="post_likes" class="form-control" value="{{ $post->likes }}">
                                                     <input type="hidden" name="author_id" class="form-control" value="{{ $post->author_id }}">
-                                                    <input type="hidden" id="active{{ $post->id }}" name="post_active" value="0">
-                                                    {{-- <div class="form-group">
-                                                        <input type="checkbox" name="active" value="1">
-                                                    </div> --}}
+                                                    {{-- <input type="hidden" id="active{{ $post->id }}" name="post_active" value="0"> --}}
 
                                                     <div class="form-group">
                                                         <label>Category : </label>
                                                         <select name="post_category_id" class="form-control">
                                                             <option selected disabled>Choose</option>
                                                             @foreach ($categories as $cat)
-                                                            {{-- <option value="{{ $cat->id }}" <?php if ({{ $cat->id == $post_category->id }}) {echo 'selected';} ?> >{{ $post->name }}</option> --}}
-
                                                             <option value="{{ $cat->id }}" @if ($cat->id == $post_category->id) {{ 'selected' }} @endif ( ) >
                                                                 {{ $cat->name }}
                                                             </option>

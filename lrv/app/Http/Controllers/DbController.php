@@ -22,7 +22,6 @@ class DbController extends Controller {
     }
     public function getUserByEmail($email) {
         $user = new Usr;
-        // $id = Users::select('id')->where('name','sara')->first();
         return $user->where('email', '=', $email)->get()->first();
     }
     public function deleteUser(Request $req) {
@@ -116,7 +115,10 @@ class DbController extends Controller {
     }
     public function getPost($id) {
         $post = new Post;
-        return view('news-details', ['post' => $post->find($id), 'users' => Usr::all(), 'categories' => Category::all()] );
+
+        $comments = Comment::where('commentable_id', '=', $id)->get();
+
+        return view('news-details', ['post' => $post->find($id), 'users' => Usr::all(), 'categories' => Category::all(), 'comments' => $comments] );
     }
     public function deletePost(Request $req) {
         $id = $req->input('id');

@@ -1,4 +1,4 @@
-form{
+.search-bar form{
     position: relative;
     transition: all 1s;
     width: 50px;
@@ -10,7 +10,8 @@ form{
     padding: 5px;
 }
 
-input{
+/* input{ */
+.search-bar input{
     position: absolute;
     top: 0;
     left: 0;
@@ -25,7 +26,7 @@ input{
     padding: 0 20px;
 }
 
-.fa{
+.search-bar .fa{
     background: crimson;
     box-sizing: border-box;
     padding: 10px;
@@ -41,21 +42,21 @@ input{
     transition: all 1s;
 }
 
-form:hover{
+.search-bar form:hover{
     width: 100%;
     cursor: pointer;
 }
 
-form:hover input{
+.search-bar form:hover input{
     display: block;
     background-color: darkgray;
 }
 
-form:hover .fa{
+.search-bar form:hover .fa{
     background: #07051a;
     color: white;
 }
-.tag
+.search-bar .tag
 {
     text-transform: uppercase;
     border-width: 0;
@@ -67,7 +68,7 @@ form:hover .fa{
     background-color: #f0f0f0;
     transition: .3s all ease-in-out;
 }
-.tag:hover
+.search-bar .tag:hover
 {
     background-color: crimson;
     color: white;

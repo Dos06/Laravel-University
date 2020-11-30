@@ -73,10 +73,6 @@
                 <p class="category">{{$cat->name}}</p>
             </a>
             @endforeach
-            <!-- <p class="category">Politics</p>
-            <p class="category">Society</p>
-            <p class="category">Sports</p>
-            <p class="category">Technology</p> -->
         </div>
     </div>
     <div class="container my-4">
@@ -119,7 +115,16 @@
                                             </a>
                                         @endif
                                     @endforeach
-                                    <a href="{{ route('news-details', $post->id) }}" class="comment-link red hover-black"><i class="fas fa-comment-alt"></i> 14</a>
+
+                                    @php
+                                        $post_comments = array();
+                                        foreach ($comments as $com) {
+                                            if ($post->id == $com->commentable_id) {
+                                                array_push($post_comments, $com);
+                                            }
+                                        }
+                                    @endphp
+                                    <a href="{{ route('news-details', $post->id) }}" class="comment-link red hover-black"><i class="fas fa-comment-alt"></i> {{ sizeof($post_comments) }}</a>
                                 </div>
 
                             </div>
@@ -162,7 +167,15 @@
                                         @endif
                                     @endforeach
 
-                                    <a href="{{ route('filterNews', $cat->id) }}" class="comment-link red hover-black"><i class="fas fa-comment-alt"></i> 14</a>
+                                    @php
+                                        $post_comments = array();
+                                        foreach ($comments as $com) {
+                                            if ($post->id == $com->commentable_id) {
+                                                array_push($post_comments, $com);
+                                            }
+                                        }
+                                    @endphp
+                                    <a href="{{ route('news-details', $post->id) }}" class="comment-link red hover-black"><i class="fas fa-comment-alt"></i> {{ sizeof($post_comments) }}</a>
                                 </div>
 
                             </div>
@@ -191,7 +204,7 @@
                     </ul>
                 </div>
             </div>
-            <div class="col-sm-12 col-lg-3 mb-3">
+            <div class="col-sm-12 col-lg-3 mb-3 search-bar">
                 <form>
 
                     <input type="search" id="search-news">

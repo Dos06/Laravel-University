@@ -680,12 +680,12 @@ ul.page-numbers a {
 }
 
 #comments form textarea {
-	height:100px;
+	height: 100px;
 }
 
 #comments .media {
 	border-top:1px dashed #DDDDDD;
-	padding:20px 0;
+	padding: 20px 0;
 	margin:0;
 }
 
@@ -1014,4 +1014,13 @@ ul.page-numbers a {
     .back-video h1 {
         font-size: 20px;
     }
+}
+
+.comment-media{
+    width:100%;
+    display: flex;
+    margin-bottom: 20px;
+}
+.comment-media img{
+    height:60px;
 }

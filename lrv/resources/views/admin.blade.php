@@ -451,7 +451,6 @@
                                                     <select name="post_category_id" class="form-control">
                                                         <option selected disabled>Choose</option>
                                                         @foreach ($categories as $cat)
-                                                        {{-- <option value="{{ $cat->id }}" <?php if ({{ $cat->id == $post_category->id }}) {echo 'selected';} ?> >{{ $post->name }}</option> --}}
 
                                                         <option value="{{ $cat->id }}" @if ($cat->id == $post_category->id) {{ 'selected' }} @endif ( ) >
                                                             {{ $cat->name }}

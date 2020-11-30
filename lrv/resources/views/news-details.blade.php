@@ -19,7 +19,7 @@
 
             <div class="col-sm-12 col-lg-9">
                 <div class="news-block mb-2">
-                    <img class="news-block-img" src="{{ $post->picture_url }}">
+                    <img class="news-block-img rounded" src="{{ $post->picture_url }}">
                     <div class="news-block-chert mt-3">
                         <p>
                             <span class="d-block">By <b class="red">@foreach ($users as $user) @if ($user->id == $post->author_id) {{ $user->name . ' ' . $user->surname }} <?php break; ?> @endif @endforeach</b></span>
@@ -34,8 +34,8 @@
                             {{ $post->content }}
                         </p>
                         <div class="footer-news-block d-flex align-items-center justify-content-between">
-                            <a href="#" class="category-link red hover-black">Design</a>
-                            <a href="#" class="comment-link red hover-black"><i class="fas fa-comment-alt"></i> 14</a>
+                            <a href="#" class="category-link red hover-black">@foreach ($categories as $cat) @if ($cat->id == $post->category_id) {{ $cat->name }} <?php break; ?> @endif @endforeach</a>
+                        <a href="#" class="comment-link red hover-black"><i class="fas fa-comment-alt"></i> {{ sizeof($comments) }}</a>
                         </div>
                     </div>
                 </div>
@@ -73,7 +73,7 @@
 
             </div>
 
-            <div class="col-sm-12 col-lg-3 mb-3">
+            <div class="col-sm-12 col-lg-3 mb-3 search-bar">
                 <form action="#">
                     <input type="search">
                     <i class="fa fa-search"></i>
@@ -106,30 +106,40 @@
 
 
 
-
-
-
-
-
-
-    <?php
-    $current_user = session()->get('currentUser');
-    ?>
-    @if ($current_user != null)
-
     <div class="container">
+        @comments(['model'=>$post])
+    </div>
+
+
+
+
+
+
+    <!-- <div class="container">
         <div class="row col-sm-12 col-lg-9 m-0">
 
             <div class="post-news-details mt-5">
-                <div class="sub-comment"></div>
+                <div class="sub-comment">
 
+                </div>
+
+                <?php
+                $current_user = session()->get('currentUser');
+                ?>
+                @if ($current_user != null)
                 <div class="comment-box box mb-4">
                     <div class="comment-btn">
                         <input type="textarea" class="comment btn btn-lg btn-dark form-control shadow container-fluid p-4" rows="5" cols="30" placeholder="Add a comment...">
                     </div>
                 </div>
+                @endif
             </div>
 
+
+            <?php
+            $current_user = session()->get('currentUser');
+            ?>
+            @if ($current_user != null)
             <div class="add-comment container-fluid p-4 mb-4">
                 <div class="box">
                     <div class="add-comment-img">
@@ -150,14 +160,21 @@
                     <button type="button" class="btn btn-secondary cancel-btn mt-2">Cancel</button>
                 </div>
             </div>
+            @endif
 
         </div>
-    </div>
+    </div> -->
 
 
 
 
     {{-- <footer id="footer"></footer> --}}
+
+
+    <?php
+    $current_user = session()->get('currentUser');
+    ?>
+    @if ($current_user != null)
 
     <script>
         $(".comment").click(function() {
