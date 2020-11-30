@@ -5,7 +5,7 @@
 @endphp
 
 <div id="comment-{{ $comment->getKey() }}" class="comment-media">
-    <img class="mr-3" src="https://www.gravatar.com/avatar/{{ md5($comment->commenter->email ?? $comment->guest_email) }}.jpg?s=64" alt="{{ $comment->commenter->name ?? $comment->guest_name }} Avatar">
+    <img class="mr-3 rounded" src="https://www.gravatar.com/avatar/{{ md5($comment->commenter->email ?? $comment->guest_email) }}.jpg?s=64" alt="{{ $comment->commenter->name ?? $comment->guest_name }} Avatar">
     <div class="media-body">
         <h5 class="mt-0 mb-1">{{ $comment->commenter->name ?? $comment->guest_name }} <small class="text-muted">- {{ $comment->created_at->diffForHumans() }}</small></h5>
         <div style="white-space: pre-wrap;">{!! $markdown->line($comment->comment) !!}</div>
@@ -43,7 +43,6 @@
                                 <div class="form-group">
                                     <label for="message">@lang('comments::comments.update_your_message_here')</label>
                                     <textarea required class="form-control" name="message" rows="3">{{ $comment->comment }}</textarea>
-                                    {{-- <small class="form-text text-muted">@lang('comments::comments.markdown_cheatsheet', ['url' => 'https://help.github.com/articles/basic-writing-and-formatting-syntax'])</small> --}}
                                 </div>
                             </div>
                             <div class="modal-footer">
@@ -72,7 +71,6 @@
                                 <div class="form-group">
                                     <label for="message">@lang('comments::comments.enter_your_message_here')</label>
                                     <textarea required class="form-control" name="message" rows="3"></textarea>
-                                    {{-- <small class="form-text text-muted">@lang('comments::comments.markdown_cheatsheet', ['url' => 'https://help.github.com/articles/basic-writing-and-formatting-syntax'])</small> --}}
                                 </div>
                             </div>
                             <div class="modal-footer">
@@ -85,7 +83,7 @@
             </div>
         @endcan
 
-        <br />{{-- Margin bottom --}}
+        <br>
 
         <?php
             if (!isset($indentationLevel)) {

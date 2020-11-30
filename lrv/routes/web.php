@@ -3,6 +3,7 @@
 use App\Http\Controllers\DbController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\FrontEndController;
+use App\Http\Controllers\UploadController;
 use App\Http\Controllers\NewsController;
 use Illuminate\Support\Facades\Route;
 use App\Models\Category;
@@ -19,6 +20,11 @@ use App\Models\Usr;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+//Uploading
+Route::get('/upload', [UploadController::class, 'uploadForm'])->name('upload');
+Route::post('/upload', [UploadController::class, 'uploadFile'])->name('uploadFile');
+
 
 Route::get('/', function () {
     return view('index');

@@ -13,7 +13,6 @@
     <div class="container">
         <div class="row py-3">
             <div class="col-md-12 mx-auto mb-5">
-                <!-- Profile widget -->
 
 
                 @if (session('success'))
@@ -63,13 +62,6 @@
                             </ul>
                         </div>
                     </div>
-                    {{-- <div class="bg-light p-4 d-flex justify-content-end text-center">
-                        <ul class="list-inline mb-0">
-                            <li class="list-inline-item">
-                            <h5 class="font-weight-bold mb-0 d-block">{{ count($posts) }}</h5><small class="text-muted"> <i class="fas fa-image mr-1"></i>Posts</small>
-                            </li>
-                        </ul>
-                    </div> --}}
                     <div class="px-4 py-3">
                         <h5 class="mb-0">About</h5>
                         <div class="p-4 rounded shadow-sm bg-light">
@@ -78,18 +70,18 @@
                             <p class="font-italic mb-0">Surname: {{ $current->surname }}</p>
                             <p class="font-italic mb-0">Email: {{ $current->email }}</p>
                             <p class="font-italic mb-0">Role: {{ $current->role }}</p>
-                            {{-- <p class="font-italic mb-0">Password: {{ $current->password }}</p> --}}
                         </div>
                     </div>
                     <div class="py-4 px-4">
                         <div class="d-flex align-items-center justify-content-between mb-3">
-                            <h5 class="mb-0">Recent posts</h5><a href="#" class="btn btn-link text-muted">Show all</a>
+                            <h5 class="mb-0">Recent posts</h5><a href="#collapsePosts" role="button" data-toggle="collapse" aria-expanded="false" aria-controls="collapsePosts" class="btn btn-link text-muted">Show all</a>
                         </div>
 
                         <button type="button" class="btn btn-dark mb-4" data-toggle="modal" data-target="#add_post">+ ADD NEW </button>
 
-                        <div class="row">
+                        <div class="row collapse" id="collapsePosts">
                             <div class="w-100">
+
                                 @foreach ($my_posts as $post)
                                     <?php
                                         $post_category = null;
@@ -118,7 +110,7 @@
                                                     </p>
                                                 @endif
                                             </div>
-                                            <img class="w-25" src="{{ $post->picture_url }}">
+                                            <img class="w-25 rounded" src="{{ $post->picture_url }}">
                                         </div>
                                     </div>
                                 </div>
@@ -160,7 +152,6 @@
                                                     <input type="hidden" name="id" value="{{ $post->id }}">
                                                     <input type="hidden" name="post_likes" class="form-control" value="{{ $post->likes }}">
                                                     <input type="hidden" name="author_id" class="form-control" value="{{ $post->author_id }}">
-                                                    {{-- <input type="hidden" id="active{{ $post->id }}" name="post_active" value="0"> --}}
 
                                                     <div class="form-group">
                                                         <label>Category : </label>
@@ -196,7 +187,6 @@
                                         </div>
                                     </div>
                                 </div>
-
 
                                 @endforeach
                             </div>

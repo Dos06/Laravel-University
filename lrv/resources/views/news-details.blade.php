@@ -51,19 +51,19 @@
                     <h3>Related news</h3>
                     <div class="row">
                         <div class="col-sm-4">
-                            <img src="https://images.idgesg.net/images/article/2019/01/orange_matrix_binary_rain_code_shallow_dof_w_bokeh_by_gonin_gettyimages_1200x800-100784691-large.jpg">
+                            <img class="rounded" src="https://images.idgesg.net/images/article/2019/01/orange_matrix_binary_rain_code_shallow_dof_w_bokeh_by_gonin_gettyimages_1200x800-100784691-large.jpg">
                             <p>Movielike photo shoot – B&W</p>
                             <hr>
                             <p></p><i class="fas fa-tags"></i> Technology</p>
                         </div>
                         <div class="col-sm-4">
-                            <img src="https://images.techhive.com/images/article/2017/03/future_what_is_next-100711982-large.jpg">
+                            <img class="rounded" src="https://images.techhive.com/images/article/2017/03/future_what_is_next-100711982-large.jpg">
                             <p>Fast forward: What's coming in future versions of Chrome?</p>
                             <hr>
                             <p></p><i class="fas fa-tags"></i> Technology</p>
                         </div>
                         <div class="col-sm-4">
-                            <img src="https://images.idgesg.net/images/article/2020/04/man_wearing_scrubs_and_face_mask_looks_at_a_world_map_tracking_clusters_spread_infection_coronavirus_covid-19_outbreak_pandemic_by_rawpixel_hwangmangjoo_id_2300360_cc0_2400x1600-100839291-large.jpg">
+                            <img class="rounded" src="https://images.idgesg.net/images/article/2020/04/man_wearing_scrubs_and_face_mask_looks_at_a_world_map_tracking_clusters_spread_infection_coronavirus_covid-19_outbreak_pandemic_by_rawpixel_hwangmangjoo_id_2300360_cc0_2400x1600-100839291-large.jpg">
                             <p>Movielike photo shoot – B&W</p>
                             <hr>
                             <p></p><i class="fas fa-tags"></i> Technology</p>

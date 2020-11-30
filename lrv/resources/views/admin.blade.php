@@ -112,14 +112,6 @@
     </nav>
 
     <div class="col-sm-12 d-flex h-100 pl-0">
-        {{-- <div class="col-sm-2 d-inline-block sticky-top" style="background-color: gainsboro; height: 100%; position: relative;">
-            <h2 class="mt-4">ADMIN PANEL</h2>
-            <ul class="list-group mt-4">
-                <li class="list-group-item" style="background-color: gainsboro"><a href="{{ route('admin') }}#users" style="color: black;"><b>Users</b></a></li>
-                <li class="list-group-item" style="background-color: gainsboro"><a href="{{ route('admin') }}#posts" style="color: black;"><b>Posts</b></a></li>
-                <li class="list-group-item" style="background-color: gainsboro"><a href="{{ route('admin') }}#categories" style="color: black;"><b>Categories</b></a></li>
-            </ul>
-        </div> --}}
 
         <div class="col-2 mt-4" id="sticky-sidebar">
             <div class="sticky-top">

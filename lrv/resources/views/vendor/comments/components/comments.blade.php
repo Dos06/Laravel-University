@@ -61,7 +61,7 @@
     {{ $grouped_comments->links() }}
 @endisset
 
-@if(session()->has('currentUser'))
+@auth
     @include('comments::_form')
 @elseif(Config::get('comments.guest_commenting') == true)
     @include('comments::_form', [

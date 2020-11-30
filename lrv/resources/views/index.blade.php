@@ -138,7 +138,6 @@
                         </div>
                         <div>
                             <i class="fas fa-user-tie fa-4x pb-4"></i>
-                            <!-- <i class="fas fa-glasses fa-4x pb-4"></i> -->
                             <h5>100+ Teachers</h5>
                         </div>
                     </div>
